@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap');
+
+* {
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    min-height: 100vh;
+    padding: 1rem;
+    display: grid;
+    align-items: center;
+    background-image: url(../images/pattern-curve.svg);
+    background-size: 15rem;
+    background-position: left bottom;
+    background-repeat: no-repeat; 
+}
+
+section {
+    display: grid;
+    grid-template-areas: "carousel" "testimonials";
+    justify-items: center;
+}
+
+.testimonials-wrapper {
+    grid-area: testimonials;
+    background-image: url(../images/pattern-quotes.svg);
+    background-size: 4rem;
+    background-position: center 5%;
+    background-repeat: no-repeat;
+}
+
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+}
+
+.testimonials__content {
+    font-weight: 400;
+    color: hsl(240, 38%, 20%);
+    line-height: 1.8rem;
+}
+
+.testimonials__avatar {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.testimonials__name {
+    font-weight: 800;
+    display: block;
+    color: hsl(240, 38%, 20%);
+}
+
+.testimonials__title {
+    font-weight: 500;
+    color:hsl(240, 18%, 77%);
+}
+
+.hidden {
+    display: none;
+}
+
+.carousel-background {
+    grid-area: carousel;
+    background-image: url(../images/pattern-bg.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 3rem;
+    position: relative;
+}
+
+.carousel-wrapper {
+    width: 18rem;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    width: 18rem;
+    transition: transform 0.4s ease-in-out;
+}
+
+.carousel__photo {
+    width: 18rem;
+    border-radius: 0.5rem;
+}
+
+.carousel__button-group {
+    position: absolute; 
+    display: flex;
+    background-color:#fff;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0.1rem 0.2rem 8px 10px rgba(0,0,0,0.05);
+}
+
+.carousel__button--prev,
+.carousel__button--next {
+    display: inline-block;   
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.disabled {
+    opacity: 0.2;
+}
+
+@media screen and (min-width: 1024px) {
+    body {
+        background-size: 25rem;
+    }
+    section {
+        grid-template-areas: "testimonials" "carousel";
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 0;
+        justify-items: stretch;
+    }
+
+    .testimonials-wrapper {
+        grid-column: 1;
+        grid-row: 1;
+        transform: translateX(15%);
+        z-index: 1;
+        background-position: 25% 5%;
+    }
+
+    .testimonials {
+        text-align: left;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .testimonials__content{
+        font-size: 1.4rem;
+        line-height: 2rem;
+    }
+
+    .testimonials__name {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+
+    .testimonials-wrapper,
+    .carousel-background {
+        justify-self: center;
+    }
+
+    .carousel-background {
+        grid-column: 2;
+        grid-row: 1;
+        transform: translateX(-15%);
+    }
+    
+    .carousel-wrapper,
+    .carousel,
+    .carousel__photo {
+        width: 25rem;
+    }
+
+    .carousel__button-group {
+        z-index: 2;
+        top: 85%;
+        left: 30%;
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    section {   
+        max-width: 70vw;
+        margin: auto;
+    }
+}
